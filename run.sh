@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
 export REGISTRY=samjbro
-export APP_NAME=template
+export APP_NAME=customer-services
 export RUN_NAME=app-runner
 export WEB_NAME=vuejs-frontend
 export API_NAME=laravel-backend
 export E2E_NAME=codeceptjs-e2e-tests
-export SERVER_NAME=nginx-server
+export SERVER_NAME=server
 export PATH_TO_WEB="../web"
 export PATH_TO_API="../api"
 export PATH_TO_E2E="../e2e"
@@ -14,9 +14,9 @@ export PATH_TO_E2E="../e2e"
 export SERVICE_NAME=$RUN_NAME
 
 export DB_ROOT_PASS=${DB_ROOT_PASS:-root}
-export DB_USER=${DB_USER:-lf-user}
-export DB_PASS=${DB_PASS:-lf-pass}
-export DB_NAME=${DB_NAME:-laravel-forum}
+export DB_USER=${DB_USER:-$APP_NAME-user}
+export DB_PASS=${DB_PASS:-$APP_NAME-pass}
+export DB_NAME=${DB_NAME:-$APP_NAME}
 export DB_HOST=${DB_HOST:-mysql}
 
 if [ "$1" == "e2e" ]; then
@@ -99,6 +99,14 @@ if [ $# -gt 0 ]; then
     else
       $COMPOSE "$@"
     fi
+  elif [ "$1" == "db" ]; then
+  shift 1
+  if [ "$1" == "creds" ]; then
+    echo "User: ${DB_USER}"
+    echo "Password: ${DB_PASS}"
+    echo "Database name: ${DB_NAME}"
+    echo "Port: ${DB_PORT}"
+   fi
   else
     $COMPOSE "$@"
   fi
