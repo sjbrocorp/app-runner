@@ -100,13 +100,13 @@ if [ $# -gt 0 ]; then
       $COMPOSE "$@"
     fi
   elif [ "$1" == "db" ]; then
-  shift 1
-  if [ "$1" == "creds" ]; then
-    echo "User: ${DB_USER}"
-    echo "Password: ${DB_PASS}"
-    echo "Database name: ${DB_NAME}"
-    echo "Port: ${DB_PORT}"
-   fi
+    shift 1
+    if [ "$1" == "creds" ]; then
+      echo "User: ${DB_USER}"
+      echo "Password: ${DB_PASS}"
+      echo "Database name: ${DB_NAME}"
+      echo "Port: ${DB_PORT}"
+    fi
   else
     $COMPOSE "$@"
   fi
