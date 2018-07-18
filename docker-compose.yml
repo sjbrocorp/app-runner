@@ -9,13 +9,14 @@ services:
     networks:
     - default-net
     volumes:
-#    - "${PATH_TO_WEB}:/usr/src/web"
+    - "${PATH_TO_WEB}:/usr/src/web"
     - web_node_modules:/usr/src/web/node_modules
   api:
     image: "${REGISTRY}/${API_NAME}"
     ports:
     - '${API_PORT}:8080'
     environment:
+      APP_ENV: "${APP_ENV}"
       DB_HOST: "${DB_HOST}"
       DB_DATABASE: "${DB_NAME}"
       DB_USERNAME: "${DB_USER}"
@@ -23,7 +24,7 @@ services:
     networks:
     - default-net
     volumes:
-#    - "${PATH_TO_API}:/usr/src/api"
+    - "${PATH_TO_API}:/usr/src/api"
     - api_vendor_files:/usr/src/api/vendor
   server:
     image: "${REGISTRY}/${SERVER_NAME}"
@@ -49,7 +50,7 @@ services:
   e2e:
     image: "${REGISTRY}/${E2E_NAME}"
     volumes:
-#    - "${PATH_TO_E2E}:/usr/src/e2e"
+    - "${PATH_TO_E2E}:/usr/src/e2e"
     - e2e_node_modules:/usr/src/e2e/node_modules
     networks:
     - default-net
