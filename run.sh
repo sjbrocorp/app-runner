@@ -53,6 +53,8 @@ if [ $# -gt 0 ]; then
       $COMPOSE run --rm web yarn lint
     elif [ "$1" == "shell" ]; then
       $COMPOSE run --rm web /bin/sh
+    elif [ "$1" == "port" ]; then
+      echo $WEB_PORT
     else
       $COMPOSE run --rm web "$@"
     fi
@@ -77,6 +79,8 @@ if [ $# -gt 0 ]; then
       $COMPOSE run --rm api composer dump-autoload
     elif [ "$1" == "shell" ]; then
       $COMPOSE run --rm api /bin/sh
+    elif [ "$1" == "port" ]; then
+      echo $API_PORT
     else
       $COMPOSE run --rm api "$@"
     fi
