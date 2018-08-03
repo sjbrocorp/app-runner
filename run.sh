@@ -7,9 +7,9 @@ export WEB_NAME=vuejs-frontend
 export API_NAME=laravel-backend
 export E2E_NAME=codeceptjs-e2e-tests
 export SERVER_NAME=nginx-server
-export PATH_TO_WEB="../cs-web"
-export PATH_TO_API="../cs-api"
-export PATH_TO_E2E="../cs-e2e"
+export PATH_TO_WEB="../web"
+export PATH_TO_API="../api"
+export PATH_TO_E2E="../e2e"
 
 export SERVICE_NAME=$RUN_NAME
 
