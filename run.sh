@@ -7,9 +7,9 @@ export WEB_NAME=vuejs-frontend
 export API_NAME=laravel-backend
 export E2E_NAME=codeceptjs-e2e-tests
 export SERVER_NAME=nginx-server
-export PATH_TO_WEB="../web"
-export PATH_TO_API="../api"
-export PATH_TO_E2E="../e2e"
+export PATH_TO_WEB="../cs-web"
+export PATH_TO_API="../cs-api"
+export PATH_TO_E2E="../cs-e2e"
 
 export SERVICE_NAME=$RUN_NAME
 
@@ -29,10 +29,10 @@ COMPOSE="docker-compose -f ./docker-compose.yml -p  $APP_NAME-$SERVICE_NAME-e2e"
 
 else
 
-export SERVER_PORT=${SERVER_PORT:-82}
-export WEB_PORT=${WEB_PORT:-3002}
-export API_PORT=${API_PORT:-8082}
-export DB_PORT=${DB_PORT:-3307}
+export SERVER_PORT=${SERVER_PORT:-80}
+export WEB_PORT=${WEB_PORT:-3000}
+export API_PORT=${API_PORT:-8080}
+export DB_PORT=${DB_PORT:-3306}
 export APP_ENV=${APP_ENV:-development}
 COMPOSE="docker-compose -f ./docker-compose.yml -p $APP_NAME-$SERVICE_NAME"
 
@@ -43,6 +43,7 @@ if [ $# -gt 0 ]; then
     ./run.sh api configure
     ./run.sh api migrate
     ./run.sh api seed
+    /.run.sh web yarn
   elif [ "$1" == "web" ]; then
     shift 1
     if [ "$1" == "test" ]; then
