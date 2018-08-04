@@ -3,7 +3,7 @@
 #### Setup
 - `./run.sh up -d`
 - Wait ten seconds or so for the mysql container to spin up
-- `./run.sh api setup`
+- `./run.sh setup`
 - Access on localhost:82 (or whatever you've exported as SERVER_PORT)
 
 #### Development
